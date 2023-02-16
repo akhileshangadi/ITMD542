@@ -6,3 +6,15 @@ body {
 a {
   color: #00B7FF;
 }
+
+.center{
+  text-align: center;
+}
+
+.underline{
+  text-decoration: underline;
+}
+
+.redtext{
+  color: red;
+}

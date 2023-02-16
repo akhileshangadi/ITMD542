@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  a(href="/contacts/add") Add Contact
+  hr
+  if contacts.length > 0
+    #contacts-wrapper
+      table(style='width:100%;text-align: center;', border='1')
+        tr
+          th First Name
+          th Last Name
+          th Email Address
+          th View Contact
+        each val in contacts
+          tr 
+            td(contacts-contactid=val.id)=val.firstName
+            td(contacts-contactid=val.id)=val.lastName
+            td(contacts-contactid=val.id)=val.emailAddress
+            td 
+              a(href=`/contacts/${val.id}`) View Contact
+  else
+    li No Contacts to Display...!!!
