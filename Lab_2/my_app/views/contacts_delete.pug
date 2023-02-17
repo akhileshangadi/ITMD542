@@ -1,11 +1,12 @@
 extends layout
 
 block content
-  h1= title
-  h3 Are you sure you want to delete the following contact...???
+  link(rel='stylesheet', href='/stylesheets/style.css')
+  h1(class='center underline')= title
+  h3(class='redtext') Are you sure you want to DELETE the following contact...???
   hr
   form(action=`/contacts/${contact.id}/delete`, method="post")
-    table(style='width:20%;', border='1')
+    table(style='width:25%; background-color: white;', border='1')
       tr 
         td 
           label(for="firstName") First Name
@@ -31,6 +32,7 @@ block content
     table(style='width:20%;')
       tr
         td
-          button(type="submit") Confirm Delete
+          button(type="submit" class="redOnHover") Confirm Delete
         td
-          a(href=`/contacts/${contact.id}`) Cancel
+          a(href=`/contacts/${contact.id}`) 
+            button(type="button") Cancel

@@ -1,38 +1,40 @@
 extends layout
 
 block content
-  h1= title
-  p Use the form below to add a Contact.
+  link(rel='stylesheet', href='/stylesheets/style.css')
+  h1(class='center underline')= title
+  h3 Use the below form to ADD a Contact.
   hr
   if msg
     p(class='redtext')= msg
   form(action="/contacts/add", method="post")
-    table(style='width:30%;')
+    table(style='width:30%; background-color: white;')
       tr
         td 
           label(for="firstName") First Name
         td
-          input(type="text", name="firstName")
+          input(type="text", name="firstName", style='width:90%;')
       tr 
         td
           label(for="lastName") Last Name
         td
-          input(type="text", name="lastName")
+          input(type="text", name="lastName", style='width:90%;')
       tr
         td
           label(for="emailAddress") Email Address
         td
-          input(type="email", name="emailAddress")
+          input(type="email", name="emailAddress", style='width:90%;')
       tr
         td
           label(for="notes") Notes
         td
-          textarea(name='notes')
+          textarea(name='notes', rows='5', style='width:90%; font-family: sans-serif;')
     br
     br
     table(style='width:30%;')
       tr
         td
-          button(type="submit") Create Contact
+          button(type="submit" class="greenOnHover") Create Contact
         td
-          a(href="/contacts") Cancel
+          a(href="/contacts") 
+            button(type="button" class="redOnHover") Cancel

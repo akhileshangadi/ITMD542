@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const contactsRepo = require('../src/contactsFileRepository');
+var dateTime = require('node-datetime');
 
 /* GET contacts listing. */
 router.get('/', function(req, res, next) {
@@ -40,7 +41,7 @@ router.get('/:uuid', function(req, res, next) {
 /* GET delete contact form. */
 router.get('/:uuid/delete', function(req, res, next) {
   const contact = contactsRepo.findById(req.params.uuid);
-  res.render('contacts_delete', {title: 'Delete a Contact', contact: contact});
+  res.render('contacts_delete', {title: 'Delete Contact', contact: contact});
 });
 
 /* POST delete contact. */
@@ -70,7 +71,8 @@ router.post('/:uuid/edit', function(req, res, next) {
       firstName: req.body.firstName.trim(),
       lastName: req.body.lastName.trim(),
       emailAddress: req.body.emailAddress.trim(),
-      notes: req.body.notes.trim()
+      notes: req.body.notes.trim(),
+      date: dateTime.create().format('Y-m-d H:M:S'),
     };
     contactsRepo.update(updateContact);
     res.redirect(`/contacts/${contact.id}`)

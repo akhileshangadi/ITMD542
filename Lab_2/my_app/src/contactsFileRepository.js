@@ -1,6 +1,7 @@
 const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
+var dateTime = require('node-datetime');
 
 const db = new Map();
 
@@ -21,12 +22,14 @@ const repo = {
     findAll: () => Array.from(db.values()),
     findById: (uuid) => db.get(uuid),
     create: (contacts) => {
+        var currentDateTime = dateTime.create().format('Y-m-d H:M:S');
         const newContact = {
             id: crypto.randomUUID(),
             firstName: contacts.firstName,
             lastName: contacts.lastName,
             emailAddress: contacts.emailAddress,
-            notes: contacts.notes
+            notes: contacts.notes,
+            date: currentDateTime
         };
         db.set(newContact.id, newContact);
         saveData();
