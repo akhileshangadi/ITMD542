@@ -1,0 +1,38 @@
+extends layout
+
+block content
+  h1= title
+  p Use the form below to Edit this Contact.
+  hr
+  if msg
+    p(class='redtext')= msg
+  form(action=`/contacts/${contact.id}/edit`, method="post")
+    table(style='width:30%;')
+      tr
+        td 
+          label(for="firstName") First Name
+        td
+          input(type="text", name="firstName", value=contact.firstName)
+      tr 
+        td
+          label(for="lastName") Last Name
+        td
+          input(type="text", name="lastName", value=contact.lastName)
+      tr
+        td
+          label(for="emailAddress") Email Address
+        td
+          input(type="email", name="emailAddress", value=contact.emailAddress)
+      tr
+        td
+          label(for="notes") Notes
+        td
+          textarea(name='notes')=contact.notes
+    br
+    br
+    table(style='width:30%;')
+      tr
+        td
+          button(type="submit") Save Contact
+        td
+          a(href=`/contacts/${contact.id}`) Cancel

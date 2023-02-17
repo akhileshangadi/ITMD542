@@ -1,0 +1,34 @@
+extends layout
+
+block content
+  h1= title
+  a(href="/contacts") View All Contacts
+  hr
+  #contact-wrapper
+    table(style='width:20%;', border='1')
+      tr 
+        td 
+          label(for="firstName") First Name
+        td 
+          p=contact.firstName
+      tr
+        td
+          label(for="lastName") Last Name
+        td
+          p=contact.lastName
+      tr
+        td
+          label(for="emailAddress") Email Address
+        td
+          p=contact.emailAddress
+      tr
+        td
+          label(for="notes") Notes
+        td
+          p=contact.notes
+    br
+    br
+    .contact-actions
+      a(href=`/contacts/${contact.id}/edit`) Edit Contact
+      | 
+      a(href=`/contacts/${contact.id}/delete`) Delete Contact
