@@ -1,0 +1,41 @@
+extends layout
+
+block content
+  link(rel='stylesheet', href='/stylesheets/style.css')
+  h1(class='center underline')= title
+  a(href="/contacts") 
+    button(type="button") View All Contacts
+  hr
+  if contact.id != undefined
+    #contact-wrapper
+      table(style='width:25%; background-color: white;', border='1')
+        tr 
+          td 
+            label(for="firstName") First Name
+          td 
+            p=contact.firstName
+        tr
+          td
+            label(for="lastName") Last Name
+          td
+            p=contact.lastName
+        tr
+          td
+            label(for="emailAddress") Email Address
+          td
+            p=contact.emailAddress
+        tr
+          td
+            label(for="notes") Notes
+          td
+            p=contact.notes
+      br
+      br
+      .contact-actions
+        a(href=`/contacts/${contact.id}/edit`) 
+          button(type="button") Edit Contact
+        | 
+        a(href=`/contacts/${contact.id}/delete`) 
+          button(type="button" class="redOnHover") Delete Contact
+  else 
+    li No Contact to Display for requested ID...!!!
