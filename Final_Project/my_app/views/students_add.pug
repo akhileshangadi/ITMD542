@@ -1,0 +1,52 @@
+extends layout
+
+block content
+  link(rel='stylesheet', href='/stylesheets/style.css')
+  h1(class='center underline')= title
+  h3 Use the below form to ADD Student Details.
+  hr
+  if msg 
+    ul
+      each val in msg 
+        li(class='redtext')= val.msg
+  form(action="/students/add", method="post")
+    table(style='width:30%; background-color: white;')
+      tr
+        td 
+          label(for="firstName") First Name
+        td
+          input(type="text", name="firstName", style='width:90%;')
+      tr 
+        td
+          label(for="lastName") Last Name
+        td
+          input(type="text", name="lastName", style='width:90%;')
+      tr
+        td
+          label(for="emailAddress") Email Address
+        td
+          input(type="email", name="emailAddress", style='width:90%;')
+      tr 
+        td
+          label(for="fatherName") Father Name
+        td
+          input(type="text", name="fatherName", style='width:90%;')
+      tr 
+        td
+          label(for="motherName") Mother Name
+        td
+          input(type="text", name="motherName", style='width:90%;')
+      tr 
+        td
+          label(for="dateOfBirth") Date of Birth
+        td
+          input(type="date", name="dateOfBirth", style='width:90%;')
+    br
+    br
+    table(style='width:30%;')
+      tr
+        td
+          button(type="submit" class="greenOnHover") Create Student
+        td
+          a(href="/students") 
+            button(type="button" class="redOnHover") Cancel

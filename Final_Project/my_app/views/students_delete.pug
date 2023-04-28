@@ -1,0 +1,48 @@
+extends layout
+
+block content
+  link(rel='stylesheet', href='/stylesheets/style.css')
+  h1(class='center underline')= title
+  h3(class='redtext') Are you sure you want to DELETE the following student details...???
+  hr
+  form(action=`/students/${student.id}/delete`, method="post")
+    table(style='width:25%; background-color: white;', border='1')
+      tr 
+        td 
+          label(for="firstName") First Name
+        td 
+          p=student.firstName
+      tr
+        td
+          label(for="lastName") Last Name
+        td
+          p=student.lastName
+      tr
+        td
+          label(for="emailAddress") Email Address
+        td
+          p=student.emailAddress
+      tr
+        td
+          label(for="fatherName") Father Name
+        td
+          p=student.fatherName
+      tr
+        td
+          label(for="motherName") Mother Name
+        td
+          p=student.motherName
+      tr
+        td
+          label(for="dateOfBirth") Date of Birth
+        td
+          p=student.dateOfBirth
+    br
+    br
+    table(style='width:20%;')
+      tr
+        td
+          button(type="submit" class="redOnHover") Confirm Delete
+        td
+          a(href=`/students/${student.id}`) 
+            button(type="button") Cancel

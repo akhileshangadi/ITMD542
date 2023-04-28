@@ -1,0 +1,50 @@
+extends layout
+
+block content
+  link(rel='stylesheet', href='/stylesheets/style.css')
+  h1(class='center underline')= title
+  h3 Use the below form to EDIT this Student Details.
+  hr
+  if msg
+    p(class='redtext')= msg
+  form(action=`/students/${student.id}/edit`, method="post")
+    table(style='width:30%; background-color: white;')
+      tr
+        td 
+          label(for="firstName") First Name
+        td
+          input(type="text", name="firstName", style='width:90%;', value=student.firstName)
+      tr 
+        td
+          label(for="lastName") Last Name
+        td
+          input(type="text", name="lastName", style='width:90%;', value=student.lastName)
+      tr
+        td
+          label(for="emailAddress") Email Address
+        td
+          input(type="email", name="emailAddress", style='width:90%;', value=student.emailAddress)
+      tr 
+        td
+          label(for="fatherName") Father Name
+        td
+          input(type="text", name="fatherName", style='width:90%;', value=student.fatherName)
+      tr 
+        td
+          label(for="motherName") Mother Name
+        td
+          input(type="text", name="motherName", style='width:90%;', value=student.motherName)
+      tr 
+        td
+          label(for="dateOfBirth") Date of Birth
+        td
+          input(type="date", name="dateOfBirth", style='width:90%;', value=student.dateOfBirth)
+    br
+    br
+    table(style='width:30%;')
+      tr
+        td
+          button(type="submit" class="greenOnHover") Save Student
+        td
+          a(href=`/students/${student.id}`) 
+            button(type="button" class="redOnHover") Cancel

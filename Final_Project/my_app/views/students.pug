@@ -1,0 +1,35 @@
+extends layout
+
+block content
+  link(rel='stylesheet', href='/stylesheets/style.css')
+  h1(class='center underline')= title
+  hr
+  table 
+    tr 
+      td 
+        a(href="/students/add")
+          button(type="button") Add Student Details
+      td
+      td 
+      td 
+        a(href="/")
+           button(type="button" class="redOnHover") Log Out
+  hr
+  if students.length > 0
+    #students-wrapper
+      table(style='width:100%; text-align: center; background-color: white;', border='1')
+        tr
+          th First Name
+          th Last Name
+          th Email Address
+          th View Student Details
+        each val in students
+          tr 
+            td(students-studentid=val.id)=val.firstName
+            td(students-studentid=val.id)=val.lastName
+            td(students-studentid=val.id)=val.emailAddress
+            td 
+              a(href=`/students/${val.id}`) 
+                button(type="button" class="blueOnHover") View Student Details
+  else
+    li No Students Data to Display...!!!

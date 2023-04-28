@@ -1,0 +1,52 @@
+extends layout
+
+block content
+  link(rel='stylesheet', href='/stylesheets/style.css')
+  h1(class='center underline')= title
+  a(href="/students") 
+    button(type="button") View All Students
+  hr
+  if student.id != undefined
+    #student-wrapper
+      table(style='width:25%; background-color: white;', border='1')
+        tr 
+          td 
+            label(for="firstName") First Name
+          td 
+            p=student.firstName
+        tr
+          td
+            label(for="lastName") Last Name
+          td
+            p=student.lastName
+        tr
+          td
+            label(for="emailAddress") Email Address
+          td
+            p=student.emailAddress
+        tr
+          td
+            label(for="fatherName") Father Name
+          td
+            p=student.fatherName
+        tr
+          td
+            label(for="motherName") Mother Name
+          td
+            p=student.motherName
+        tr
+          td
+            label(for="dateOfBirth") Date of Birth
+            p="(yyyy-mm-dd)"
+          td
+            p=student.dateOfBirth
+      br
+      br
+      .student-actions
+        a(href=`/students/${student.id}/edit`) 
+          button(type="button") Edit Student Details
+        | 
+        a(href=`/students/${student.id}/delete`) 
+          button(type="button" class="redOnHover") Delete Student Details
+  else 
+    li No Student Details to Display for requested ID...!!!
